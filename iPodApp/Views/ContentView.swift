@@ -7,6 +7,8 @@ struct ContentView: View {
     @StateObject private var playerViewModel = MusicPlayerViewModel()
     @State private var showNowPlaying = false
     @State private var isBlackiPod = true
+    @State private var showLibraryLoader: LibraryListView.LibraryType?
+    @State private var libraryLoaderParameter: String?
     
     var body: some View {
         ZStack {
@@ -38,6 +40,21 @@ struct ContentView: View {
                 iPodDeviceView
                 
                 Spacer()
+            }
+            
+            /// Library loader view
+            if let libraryType = showLibraryLoader {
+                LibraryListView(
+                    currentMenuItems: $currentMenuItems,
+                    selectedIndex: $selectedIndex,
+                    navigationStack: $navigationStack,
+                    libraryType: libraryType,
+                    artistOrAlbumName: libraryLoaderParameter
+                )
+                .onAppear {
+                    showLibraryLoader = nil
+                    libraryLoaderParameter = nil
+                }
             }
         }
     }
@@ -147,6 +164,24 @@ struct ContentView: View {
             print("Show settings")
         case .custom(let action):
             action()
+        case .showLibrarySongs:
+            print("Showing library songs")
+            showLibraryLoader = .songs
+        case .showLibraryArtists:
+            print("Showing library artists")
+            showLibraryLoader = .artists
+        case .showLibraryAlbums:
+            print("Showing library albums")
+            showLibraryLoader = .albums
+        case .showLibraryPlaylists:
+            print("Showing library playlists")
+            showLibraryLoader = .playlists
+        case .showArtistSongs(let artist):
+            libraryLoaderParameter = artist
+            showLibraryLoader = .artistSongs
+        case .showAlbumSongs(let album):
+            libraryLoaderParameter = album
+            showLibraryLoader = .albumSongs
         }
     }
     
