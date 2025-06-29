@@ -4,6 +4,18 @@
 
 This is a nostalgic recreation of the classic iPod interface for iOS. Currently, it has performance issues and the Apple Music library integration doesn't work properly, but it's still a fun experiment in recreating that old-school iPod experience we all loved.
 
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/86c7a9c3-43ad-48da-9d6b-1d16d1529836" width="350"/>
+    </td>
+    <td>
+      <img src="https://github.com/user-attachments/assets/7f273343-dec8-489b-b247-9b79f4fe9127" width="350"/>
+    </td>
+  </tr>
+</table>
+
+
 ## Features
 
 - Classic iPod UI with authentic styling (black & white variants)
