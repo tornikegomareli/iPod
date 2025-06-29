@@ -152,14 +152,31 @@ struct NowPlayingView: View {
     }
     
     private var iPodBackgroundGradient: some View {
-        LinearGradient(
-            colors: [
-                Color(red: 0.85, green: 0.88, blue: 0.85),
-                Color(red: 0.75, green: 0.78, blue: 0.75)
-            ],
-            startPoint: .top,
-            endPoint: .bottom
-        )
+        ZStack {
+            /// Base LCD color
+            LinearGradient(
+                colors: [
+                    Color(red: 0.85, green: 0.88, blue: 0.85),
+                    Color(red: 0.75, green: 0.78, blue: 0.75)
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            
+            /// LCD pixel grid effect
+            LCDPixelGrid()
+            
+            /// LCD ghosting/shimmer effect
+            LinearGradient(
+                colors: [
+                    Color.white.opacity(0.03),
+                    Color.clear,
+                    Color.black.opacity(0.03)
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        }
     }
     
     private func formatTime(_ time: TimeInterval) -> String {
