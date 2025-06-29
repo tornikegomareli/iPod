@@ -1,4 +1,5 @@
 import Foundation
+import MediaPlayer
 
 struct Song: Identifiable, Equatable {
     let id = UUID()
@@ -8,14 +9,16 @@ struct Song: Identifiable, Equatable {
     let duration: TimeInterval
     let fileURL: URL?
     let artworkData: Data?
+    let persistentID: MPMediaEntityPersistentID?
     
-    init(title: String, artist: String, album: String, duration: TimeInterval, fileURL: URL? = nil, artworkData: Data? = nil) {
+    init(title: String, artist: String, album: String, duration: TimeInterval, fileURL: URL? = nil, artworkData: Data? = nil, persistentID: MPMediaEntityPersistentID? = nil) {
         self.title = title
         self.artist = artist
         self.album = album
         self.duration = duration
         self.fileURL = fileURL
         self.artworkData = artworkData
+        self.persistentID = persistentID
     }
     
     var formattedDuration: String {

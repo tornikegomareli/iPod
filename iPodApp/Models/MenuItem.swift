@@ -25,11 +25,11 @@ struct MenuItem: Identifiable {
     
     static var musicMenuItems: [MenuItem] {
         [
-            MenuItem(title: "Playlists", icon: "music.note.list", action: .navigate(playlistMenuItems)),
-            MenuItem(title: "Artists", icon: "person", action: .navigate([])),
-            MenuItem(title: "Albums", icon: "square.stack", action: .navigate([])),
-            MenuItem(title: "Songs", icon: "music.note", action: .navigate(songMenuItems)),
-            MenuItem(title: "Genres", icon: "guitars", action: .navigate([]))
+            MenuItem(title: "Playlists", icon: "music.note.list", action: .showLibraryPlaylists),
+            MenuItem(title: "Artists", icon: "person", action: .showLibraryArtists),
+            MenuItem(title: "Albums", icon: "square.stack", action: .showLibraryAlbums),
+            MenuItem(title: "Songs", icon: "music.note", action: .showLibrarySongs),
+            MenuItem(title: "Mock Songs", icon: "music.note", action: .navigate(songMenuItems))
         ]
     }
     

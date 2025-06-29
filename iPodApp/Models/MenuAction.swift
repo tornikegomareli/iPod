@@ -7,4 +7,10 @@ enum MenuAction {
     case showNowPlaying
     case showSettings
     case custom(() -> Void)
+    case showLibrarySongs
+    case showLibraryArtists
+    case showLibraryAlbums
+    case showLibraryPlaylists
+    case showArtistSongs(String)
+    case showAlbumSongs(String)
 }
